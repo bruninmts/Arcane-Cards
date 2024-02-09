@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcane Cards</title>
+</head>
+<body>
+  <div class="container">
+    <img src="gatodemerdafinal1.gif" alt="GIF" class="gif">
+    <h1>Arcane Cards</h1>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <ul id="gamesList"></ul>
+  </div>
+  <script >
+    document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  const gamesList = document.getElementById('gamesList');
+  const games = ['Super Mario', 'Legend of Zelda', 'Final Fantasy', 'Minecraft', 'Pokemon', 'Tetris', 'Call of Duty', 'Fortnite', 'Among Us', 'GTA V', 'Overwatch'];
+
+  function displayGames(searchTerm) {
+    const filteredGames = games.filter(game => game.toLowerCase().includes(searchTerm.toLowerCase()));
+    gamesList.innerHTML = '';  
+    if (filteredGames.length === 0) {
+      alert("Ainda não temos o game que você quer 😥");
+    } else {
+      filteredGames.forEach(game => {
+        const li = document.createElement('li');
+        li.textContent = game;
+        gamesList.appendChild(li);
+      });
+    }
+  }
+
+  function handleSearch() {
+    const searchTerm = searchInput.value.trim();
+    displayGames(searchTerm);
+  }
+
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  });
+
+  
+  const searchButton = document.getElementById('searchButton');
+  searchButton.addEventListener('click', handleSearch);
+
+  
+  displayGames('');
+});
+
+  </script>
+  <style>
+    body {
+     
+  font-family: Arial, sans-serif;
+  background-color: #ad82d6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #8a2be2;
+  border-radius: 10px;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-sizing: border-box; 
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.gif {
+  display: block;
+  margin: 0 auto 20px; 
+  width: 70px;
+  height: 70px;
+}
+
+
+    
+    </style>
+</body>
+</html>
